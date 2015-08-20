@@ -1,0 +1,16 @@
+{
+  "name": "meetup",
+  "version": "1.0.0",
+  "description": "This project uses the Meetup stream API to fetch the RSVP realtime and then feed it to Appbase",
+  "main": "app.js",
+  "dependencies": {
+    "elasticsearch": "^6.1.0",
+    "appbase-js": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "appbase",
+  "license": "ISC"
+}

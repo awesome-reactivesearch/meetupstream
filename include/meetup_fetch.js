@@ -9,7 +9,7 @@ exports.meetup = function() {
   //Implementations
 
   //Fetch  data here
-  function fetch() {
+  function fetch(url) {
     //Get Request starts here
     http.get(url, function(res) {
       res.on('data', function(chunk) {
