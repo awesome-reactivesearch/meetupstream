@@ -3,17 +3,17 @@ var appbase = require("appbase-js")
 var elasticsearch = require('elasticsearch')
 var meetup_data = [];
 var fetch_response;
+// app and authentication configurations  
+var HOSTNAME = "scalr.api.appbase.io"
+var APPNAME = "meetuprsvp"
+var USERNAME = "61ONSqYR2"
+var PASSWORD = "8820fb93-72e7-4dbf-a2a9-4b378f0197c9"
+
 var db = {
-  index: 'createnewtestapp01',
+  index: APPNAME,
   type: 'meetup',
   body: {}
 };
-// app and authentication configurations  
-var HOSTNAME = "scalr.api.appbase.io"
-var APPNAME = "createnewtestapp01"
-var USERNAME = "RIvfxo1u1"
-var PASSWORD = "dee8ee52-8b75-4b5b-be4f-9df3c364f59f"
-
 exports.meetup = function() {
   return {
     fetch: fetch,
