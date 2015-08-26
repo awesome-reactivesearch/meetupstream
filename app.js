@@ -1,6 +1,7 @@
+var http = require("http");
+var express = require('express');
 var url = 'http://stream.meetup.com/2/rsvps';
 var meetup = require('./include/meetup_fetch.js').meetup();
-
 //Start fetching
 meetup.fetch(url);
 
