@@ -4,8 +4,9 @@
   "description": "This project uses the Meetup stream API to fetch the RSVP realtime and then feed it to Appbase",
   "main": "app.js",
   "dependencies": {
+    "appbase-js": "^0.1.0",
     "elasticsearch": "^6.1.0",
-    "appbase-js": "^0.1.0"
+    "express": "^4.13.3"
   },
   "devDependencies": {},
   "scripts": {
