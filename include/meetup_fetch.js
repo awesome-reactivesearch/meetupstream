@@ -58,18 +58,15 @@ exports.meetup = function() {
         index: {}
       });
       meetup_push_array.push(type1);
+      client.index({
+        index: db['index'],
+				type: db['type'],
+				body: meetup_data[data_count]
+			}, function(err, res) {
+        //console.log("res: ", res);
+      })
     }
 
-    //For Bulk data
-    client.bulk({
-      index: db['index'],
-      type: db['type'],
-      body: meetup_push_array
-    }, function(err, resp) {
-      console.log("b_a: ", resp.items);
-      meetup_data = [];
-      fetch_response.resume();
-    });
   }
 
 }
