@@ -7,5 +7,5 @@ meetup.fetch(url);
 //push to appbase in 10 sec. interval
 setInterval(function(){
 	meetup.push_to_appbase();
-},10000);
+},1000);
 
