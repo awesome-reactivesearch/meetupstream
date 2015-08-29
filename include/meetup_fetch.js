@@ -8,6 +8,7 @@ var HOSTNAME = "scalr.api.appbase.io"
 var APPNAME = "meetuprsvp"
 var USERNAME = "61ONSqYR2"
 var PASSWORD = "8820fb93-72e7-4dbf-a2a9-4b378f0197c9"
+var FLAG_FREE = true;
 
 var db = {
   index: APPNAME,
@@ -29,8 +30,8 @@ exports.meetup = function() {
         //Parse json and store in meetup array
         try {
           var data = JSON.parse(chunk);
-          console.log('data : ',data);
           meetup_data.push(data);
+          console.log('data : ',meetup_data.length);
         } catch (er) {
           //console.log('error: ' + er.message);
         }
@@ -44,23 +45,39 @@ exports.meetup = function() {
 
   //Push to appbase
   function push_to_appbase() {
-    if (meetup_data.length) {
+    if (FLAG_FREE && meetup_data.length) {
+      FLAG_FREE = false
       var client = new elasticsearch.Client({
         host: 'https://' + USERNAME + ":" + PASSWORD + "@" + HOSTNAME,
       });
 
       //Pause streaming
       fetch_response.pause();
+      var data_count = 0; 
+      var meetup_length = meetup_data.length;
+      single_insert();
 
-      for (var data_count = 0; data_count < meetup_data.length; data_count++) {
-        client.index({
+      //Single Insertion
+      function single_insert(){
+        var meetup_record = meetup_data[data_count];
+         client.index({
           index: db['index'],
-				  type: db['type'],
-				  body: meetup_data[data_count]
-			  }, function(err, res) {
-          meetup_data = [];
-          fetch_response.resume();
-          console.log("res: ", res);
+          type: db['type'],
+          body: meetup_record
+        }, function(err, res) {
+          
+          //Resume response on last data
+          if(data_count == meetup_length){
+            console.log("res: ", data_count);
+            meetup_data = [];
+            FLAG_FREE = true;
+            fetch_response.resume();          
+          }
+          //Else recursive
+          else{
+            data_count++;
+            single_insert();
+          }
         })
       }
     }
