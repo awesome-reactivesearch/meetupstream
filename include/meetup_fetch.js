@@ -29,6 +29,7 @@ exports.meetup = function() {
         //Parse json and store in meetup array
         try {
           var data = JSON.parse(chunk);
+          console.log('data : ',data);
           meetup_data.push(data);
         } catch (er) {
           //console.log('error: ' + er.message);
@@ -57,7 +58,9 @@ exports.meetup = function() {
 				  type: db['type'],
 				  body: meetup_data[data_count]
 			  }, function(err, res) {
-          //console.log("res: ", res);
+          meetup_data = [];
+          fetch_response.resume();
+          console.log("res: ", res);
         })
       }
     }
