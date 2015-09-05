@@ -5,9 +5,9 @@ var meetup_data = [];
 var fetch_response;
 // app and authentication configurations  
 var HOSTNAME = "scalr.api.appbase.io"
-var APPNAME = "meetuprsvp"
-var USERNAME = "61ONSqYR2"
-var PASSWORD = "8820fb93-72e7-4dbf-a2a9-4b378f0197c9"
+var APPNAME = "meetup2"
+var USERNAME = "qz4ZD8xq1"
+var PASSWORD = "a0edfc7f-5611-46f6-8fe1-d4db234631f3"
 var FLAG_FREE = true;
 
 var db = {
