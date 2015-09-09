@@ -63,6 +63,7 @@ exports.meetup = function() {
          client.index({
           index: db['index'],
           type: db['type'],
+          id: meetup_record['rsvp_id'],
           body: meetup_record
         }, function(err, res) {
           
