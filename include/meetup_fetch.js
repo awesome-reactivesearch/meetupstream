@@ -66,10 +66,8 @@ exports.meetup = function() {
           id: meetup_record['rsvp_id'],
           body: meetup_record
         }, function(err, res) {
-          
           //Resume response on last data
-          if(data_count == meetup_length){
-            console.log("res: ", data_count);
+          if(data_count + 1 >= meetup_length){
             meetup_data = [];
             FLAG_FREE = true;
             fetch_response.resume();          

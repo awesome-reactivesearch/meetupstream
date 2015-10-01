@@ -5,7 +5,7 @@ var meetup = require('./include/meetup_fetch.js').meetup();
 //Start fetching
 meetup.fetch(url);
 
-//push to appbase in 10 sec. interval
+//push to appbase in 1 sec. interval
 setInterval(function(){
 	meetup.push_to_appbase();
 },1000);
